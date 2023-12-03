@@ -42,7 +42,7 @@ int registro(){
 	scanf("%s", sobrenome);
 	
 	file = fopen(arquivo, "a");
-	fprintf(file, sobrenome);
+	fprintf(file,sobrenome);
 	fclose(file);
 	
 	file = fopen(arquivo,"a");
@@ -67,15 +67,13 @@ int consulta(){
 	char conteudo[200];
 	//fim de criacao de variaveis
 	
-	// Solicita ao usuario que insira o CPF a ser cadastrado 
-	printf("Digite o CPF a ser consultado: ");
+	printf("Digite o CPF a ser consultado: "); // Solicita ao usuario que insira o CPF a ser cadastrado 
 	scanf("%s",cpf); //salva a informacao solicitada acima
 	
 	FILE *file; // abre os arquivos que corresponde ao cpf pra leitura
 	file =  fopen(cpf,"r"); //abre o arquivo e lê ele
 	
-	//mensagem para caso nao tenha o arquivo no banco de dados
-	if(file == NULL){
+	if(file == NULL){ //mensagem para caso nao tenha o arquivo no banco de dados
 		printf("Arquivo nao localizado\n");
 	}
 	
@@ -125,10 +123,19 @@ int main(){
 	
 	int opcao = 0; //definindo variaveis
 	int laco = 1; //variavel de repeticao
- 
-	for(laco=1;laco=1;){
+	char senhadigitada[] = "a"; //variavel para armazenar a senha
+	int comparacao; //funcao para comparar e verificar se a senha esta certa
+	
+	printf("### Cartório da EBAC ###\n\n");
+	printf("Login de adminstrador!\n\n Digite a sua senha: ");
+	scanf("%s", senhadigitada);
+	
+	comparacao = strcmp(senhadigitada, "admin"); //compara a senha digitada e verifica se esta correta
+	
+	if(comparacao == 0){
 		
 		system("cls"); //responsavel por limpar a tela
+		for(laco=1;laco=1;){
 		setlocale(LC_ALL, "Portuguese"); //definindo linguagem
 		
 		//inicio do menu
@@ -138,15 +145,14 @@ int main(){
 		printf("\t2 - Consultar nomes\n");
 		printf("\t3 - Deletar nomes\n"); 
 		printf("\t4 - Sair do sistema?\n\n");
-		printf("Opcao:"); 
+		printf("Opcao: "); 
 		//final do menu
 		
 		scanf("%d", &opcao); //armazenando a escolha do user
 		
 		system("cls"); //responsavel por limpar a tela
 		
-		//Inicio da selecao
-		
+		//Inicio da selecao do menu	
 		switch(opcao){
 			case 1:
 				registro(); //chamada da funcao registro
@@ -162,22 +168,20 @@ int main(){
 			
 			case 4:
 				printf("Obrigado por utilizar o sistema!\n");
-				return 0;
+				return 0; //sair do programa
 			break;
 			
 			default:
 				printf("Esse numero nao e valido, tente novamente! \n\n");
 				system("pause");
 			
+			}
+		//fim da selecao	
 		}
-		//fim da selecao
-		
-		
-		
-		
-		//printf("Esse Software foi desenvolvido por Paulo Francisco\n");
-		
 	}
+	
+	else
+		printf("Senha INCORRETA!");
 	
 	
 }
