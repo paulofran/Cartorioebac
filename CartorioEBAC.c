@@ -12,9 +12,7 @@ int registro(){
 	char sobrenome [40];
 	char cargo [40];
 	//final da criacao de variaveis/strings
-	int opcao = 0;
 	
-	printf("Voltar a pagina?: \n\n");
 	printf("Digite o CPF a ser cadastrado: "); //coletando a informacao do usuario
 	scanf("%s", cpf); //salvando a informacao do usuario e %s refere-se a string
 	
@@ -138,7 +136,8 @@ int main(){
 		printf("Escolha a opção desejada do menu:\n\n");
 		printf("\t1 - Registrar nomes\n");
 		printf("\t2 - Consultar nomes\n");
-		printf("\t3 - Deletar nomes\n\n"); 
+		printf("\t3 - Deletar nomes\n"); 
+		printf("\t4 - Sair do sistema?\n\n");
 		printf("Opcao:"); 
 		//final do menu
 		
@@ -159,6 +158,11 @@ int main(){
 			
 			case 3:
 				deletar(); //chamada da funcao deletar
+			break;
+			
+			case 4:
+				printf("Obrigado por utilizar o sistema!\n");
+				return 0;
 			break;
 			
 			default:
